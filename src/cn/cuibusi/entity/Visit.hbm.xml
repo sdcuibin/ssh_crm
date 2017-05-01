@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1 配置类和表对应 
+		class标签
+		name属性：实体类全路径
+		table属性：数据库表名称
+	-->
+	<class name="cn.cuibusi.entity.Visit" table="t_visit">
+		<id name="vid" column="vid">
+			<generator class="native"></generator>
+		</id>
+		<property name="vaddress" column="vaddress"></property>
+		<property name="vconcent" column="vconcent"></property>
+		
+		<many-to-one name="user" class="cn.cuibusi.entity.User" column="uvid"></many-to-one>
+		<many-to-one name="customer" class="cn.cuibusi.entity.Customer" column="cvid"></many-to-one>
+	</class>
+</hibernate-mapping>
