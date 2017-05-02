@@ -8,12 +8,22 @@
 	<constant name="struts.multipart.maxSize" value="209715200"></constant>
 	
 	<package name="demo1" extends="struts-default" namespace="/">
+	<interceptors>
+		<interceptor name="logininterceptor" class="cn.cuibusi.interceptor.LoginInterceptor"></interceptor>
+	</interceptors>
 	<action name="user_*" class="userAction" method="{1}">
+	<interceptor-ref name="logininterceptor">
+				<param name="excludeMethods">login</param>
+	</interceptor-ref>
+	<interceptor-ref name="defaultStack"></interceptor-ref>
 		<result name="loginsuccess">/index.htm</result>
 		<result name="login">/login.jsp</result>
 	</action>
 	
 	<action name="customer_*" class="customerAction" method="{1}">
+	<interceptor-ref name="logininterceptor">
+	</interceptor-ref>
+	<interceptor-ref name="defaultStack"></interceptor-ref>
 		<result name="toAddPage">/jsp/customer/add.jsp</result>
 		<result name="add" type="redirectAction">customer_list</result>
 		<result name="list">/jsp/customer/list.jsp</result>
@@ -26,9 +36,13 @@
 		<result name="moreCondition">/jsp/customer/list.jsp</result>
 		<result name="countSource">/jsp/customer/listSource.jsp</result>
 		<result name="countLevel">/jsp/customer/listLevel.jsp</result>
+		<result name="login">/login.jsp</result>
 	</action>
 	
 	<action name="linkman_*" class="linkManAction" method="{1}">
+	<interceptor-ref name="logininterceptor">
+	</interceptor-ref>
+	<interceptor-ref name="defaultStack"></interceptor-ref>
 		<result name="toAddPage">/jsp/linkman/add.jsp</result>
 		<result name="addLinkMan" type="redirectAction">linkman_list</result>
 		<result name="input">/jsp/error.jsp</result>
@@ -38,14 +52,19 @@
 		<result name="delete" type="redirectAction">linkman_list</result>
 		<result name="toSelectPage">/jsp/select/linkman.jsp</result>
 		<result name="moreCondition">/jsp/linkman/list.jsp</result>
+		<result name="login">/login.jsp</result>
 	</action>
 	
 	<action name="visit_*" class="visitAction" method="{1}">
+	<interceptor-ref name="logininterceptor">
+	</interceptor-ref>
+	<interceptor-ref name="defaultStack"></interceptor-ref>
 		<result name="toAddPage">/jsp/visit/add.jsp</result>
 		<result name="addVisit">/jsp/success.jsp</result>
 		<result name="list">/jsp/visit/list.jsp</result>
 		<result name="toSelectPage">/jsp/select/visit.jsp</result>
 		<result name="moreCondition">/jsp/visit/list.jsp</result>
+		<result name="login">/login.jsp</result>
 	</action>
 	</package>
 </struts>

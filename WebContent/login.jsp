@@ -15,7 +15,7 @@ TD {
 
 <META content="MSHTML 6.00.6000.16809" name=GENERATOR></HEAD>
 <BODY>
-<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/user_login.action" method="post">
+<FORM id=form1 name=form1 action="${pageContext.request.contextPath }/user_login.action" method="post" target="_parent">
 
 <DIV id=UpdatePanel1>
 <DIV id=div1 
